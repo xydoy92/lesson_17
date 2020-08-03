@@ -1,26 +1,13 @@
 let user = {
 	name: "Kolya",
 	age: 15,
-	changeOrCreateObject(name, age) {
-		let userCopy = {};
-		if(name !== undefined || age !== undefined) {
-			this.name = name;
-			this.age = age;
-		} else {
-			for(let key in this) {
-				userCopy[key] = user[key];
-			}
-			return userCopy;
-		}
+	change: function NewUser(name = user.name, age = user.age) {
+		this.name = name;
+		this.age = age;
 	},
 };
-
-Object.defineProperty(user, "changeOrCreateObject", {
-	enumerable: false,
-});
-
-let userCopy = user.changeOrCreateObject();
-
-user.changeOrCreateObject("Victor", 44);
+let userCopy = new user.change();
 console.log(userCopy);
+
+user.change("Victor", 44);
 console.log(user);
